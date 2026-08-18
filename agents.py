@@ -17,3 +17,22 @@ class MultiAgentState(TypedDict):
     report_answer: str
     total_cost: float
 
+def research_node(state: MultiAgentState) -> dict:
+
+    query = state["query"]
+    search_results = tavily_client.search(query=query)
+    results = search_results["results"]
+
+    draft_system_prompt = """
+    You are a research assistant, answer the question using the search results below.
+    """
+    messages = [
+        {
+            "role": "system",
+            "content": draft_system_prompt
+        }
+        {
+            "role": "user",
+            "content": f"Search results: "
+        }
+    ]
