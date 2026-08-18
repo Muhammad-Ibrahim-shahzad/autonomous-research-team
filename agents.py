@@ -31,8 +31,4 @@ def research_node(state: MultiAgentState) -> dict:
             "role": "system",
             "content": draft_system_prompt
         }
-        {
-            "role": "user",
-            "content": f"Search results: "
-        }
     ]
